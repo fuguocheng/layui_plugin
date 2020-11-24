@@ -62,6 +62,14 @@ layui.define(['element'], function (exports) {
         opt.navArr = opt.navArr || defaultNavArr;
         CreateRightMenu(opt);
         registClickMidCloseTab(this.isClickMidCloseTab,opt);
+        // 隐藏固定tab的关闭按钮
+		$.each($("#" + opt.filter + " li"), function (i) {
+		    if ((opt.pinTabTitles && opt.pinTabTitles.indexOf($(this).text()) != -1) ||
+		        (opt.pintabIDs && opt.pintabIDs.indexOf($(this).attr("lay-id")) != -1))
+		    {
+		        $(this).find('.layui-tab-close').addClass('layui-hide');
+		    }
+		})
     };
 
 
